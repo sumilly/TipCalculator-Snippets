@@ -1,0 +1,53 @@
+<div class="tip-container">
+  <div class="instruction"> 1. Enter the Price from your receipt before adding tips </div>
+
+  <div class="field-row">
+    <span class="label-col">Price</span>
+    <span class="input-col js-price">
+      <input
+        type="number" step="0.1" min="0"
+        v-model.number="price" v-on:change="onPriceChanged" />
+    </span>
+  </div>
+
+  <div class="instruction"> 2. Enter the percentage of your bill you want to tip, or the amount to tip, or the total you want to pay including tips </div>
+
+  <div class="field-row">
+    <span class="label-col tip-percent">Tip %</span>
+    <span class="input-col">
+      <div>
+        <input
+          type="number" step="0.1" min="0" max="100"
+          v-model.number="tipPercent" v-on:change="onTipPercentChanged" />
+      </div>
+      <div class="tip-preset-container">
+        <button class="tip-preset"
+          v-for="tipPreset in tipPresets" v-on:click="tipPercent = tipPreset; onTipPercentChanged()">${ tipPreset }%</button>
+      </div>
+    </span>
+  </div>
+
+  <div class="field-row">
+    <span class="label-col">Tip Amount</span>
+    <span class="input-col" v-on:change="">
+      <input
+        type="number" step="0.1" min="0"
+        v-model.number="tipAmount" v-on:change="onTipAmountChanged" />
+    </span>
+  </div>
+
+  <div class="field-row">
+    <span class="label-col">Total</span>
+    <span class="input-col">
+      <input
+        type="number" step="0.1" min="0"
+        v-model.number="totalAmount" v-on:change="onTotalChanged" />
+    </span>
+  </div>
+
+  <div class="field-row clear-row">
+    <span class="input-col">
+      <button v-on:click="clearInput">Clear</button>
+    </span>
+  </div>
+</div>
